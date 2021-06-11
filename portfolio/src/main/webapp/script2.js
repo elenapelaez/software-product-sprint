@@ -1,7 +1,9 @@
 async function getMessage() {
-    const response = await fetch('/hello');
-    const textResponse = await response.text();
+    const serverResponse = await fetch('/hello');
+    const messages = await serverResponse.json();
 
     const container = document.getElementById('greeting-container');
-    container.innerText = textResponse;
+    const message = messages[Math.floor(Math.random() * messages.length)];
+
+    container.innerText = message;
 }
