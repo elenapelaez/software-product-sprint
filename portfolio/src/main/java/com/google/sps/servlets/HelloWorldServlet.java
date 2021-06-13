@@ -5,25 +5,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
+import java.util.List;
+import java.util.Arrays;
 import com.google.gson.Gson;
 
 /** Handles requests sent to the /hello URL. Try running a server and navigating to /hello! */
 @WebServlet("/hello")
 public class HelloWorldServlet extends HttpServlet {
 
+    private static final List <String> positiveMessages = Arrays.asList("Keep your face to the sunshine and you cannot see a shadow", 
+        "The only time you fail is when you fall down and stay down",
+        "If opportunity doesn't knock, build a door", 
+        "Live life to the fullest and focus on the positive");
+
+    private static final String message_as_json = new Gson().toJson(positiveMessages);
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    ArrayList<String> positiveMessages = new ArrayList<String>();
-    positiveMessages.add("Keep your face to the sunshine and you cannot see a shadow");
-    positiveMessages.add("The only time you fail is when you fall down and stay down");
-    positiveMessages.add("If opportunity doesn't knock, build a door");
-    positiveMessages.add("Live life to the fullest and focus on the positive");
-
-    Gson gson = new Gson();
-    String json = gson.toJson(positiveMessages);
-
     response.setContentType("application/json;");
-    response.getWriter().println(json);
+    response.getWriter().println(message_as_json);
   }
 }
