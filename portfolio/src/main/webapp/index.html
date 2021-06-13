@@ -21,6 +21,7 @@
         <button onclick="getMessage();">Click me!</button>
 
       <div id="greeting-container"></div>
+
       <hr>
       <h2>More about me</h2>
       <p>I'm a CS major, but I also have a minor in Sociology! I'm in various clubs, such 
@@ -31,7 +32,13 @@
       <h2>Connect with me!</h2>
       <a href="https://www.linkedin.com/in/elena-pelaez/">LinkedIn</a>
       <a href="https://github.com/elenapelaez">GitHub</a>
-      
+
+      <form action="/submit-email" method="POST">
+        <p>Or send me your email so I can reach out to you!</p>
+        <textarea name="email-address">email@sample.com</textarea>
+        <br/>
+        <input type="submit" />
+      </form>
     </div>
   </body>
 </html>
