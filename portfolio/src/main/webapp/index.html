@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <title>My Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="getServletResponse.js"></script>
   </head>
   <body>
     <div id="content">
       <h1>Welcome to Elena Pelaez's Portfolio</h1>
       <p>This is my portfolio.</p>
+      <img src="images/Professional Headshot - Pelaez.jpg" height="200px">
       <p>
           I am a computer science major at Truman State University! I am originally from
             Kansas City, Missouri and I am super excited to work with the SPS program!
       </p>
-      <p>Click <a href="/hello">here</a> to see content created by server code.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
+      
+      <p>A message sent by the server will be shown here:</p>
+      
+        <button onclick="getMessage();">Click me!</button>
+
       <div id="greeting-container"></div>
+
       <hr>
       <h2>More about me</h2>
       <p>I'm a CS major, but I also have a minor in Sociology! I'm in various clubs, such 
@@ -26,9 +30,15 @@
           my free time, and I'm trying to teach myself how to cook!
       </p>
       <h2>Connect with me!</h2>
-      <a href="https://www.linkedin.com/in/elena-pelaez/">Here's my LinkedIn</a>
-      <a href="https://github.com/elenapelaez">Here's my GitHub</a>
-      
+      <a href="https://www.linkedin.com/in/elena-pelaez/">LinkedIn</a>
+      <a href="https://github.com/elenapelaez">GitHub</a>
+
+      <form action="/submit-email" method="POST">
+        <p>Or send me your email so I can reach out to you!</p>
+        <textarea name="email-address">email@sample.com</textarea>
+        <br/>
+        <input type="submit" />
+      </form>
     </div>
   </body>
 </html>
