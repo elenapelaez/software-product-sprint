@@ -6,6 +6,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Responds to a request consisting of a user's email
+ * @param request a POST request containing a user's data
+ * @param response a response to the POST request that will be sent back to the caller
+ */
+
 @WebServlet("/submit-email")
 public class SubmitEmailServlet extends HttpServlet {
 

@@ -13,10 +13,11 @@ import com.google.gson.Gson;
 @WebServlet("/hello")
 public class HelloWorldServlet extends HttpServlet {
 
-    private static final List <String> positiveMessages = Arrays.asList("Keep your face to the sunshine and you cannot see a shadow", 
-        "The only time you fail is when you fall down and stay down",
-        "If opportunity doesn't knock, build a door", 
-        "Live life to the fullest and focus on the positive");
+    private static final List<String> positiveMessages = Arrays.asList(
+      "Keep your face to the sunshine and you cannot see a shadow", 
+      "The only time you fail is when you fall down and stay down",
+      "If opportunity doesn't knock, build a door", 
+      "Live life to the fullest and focus on the positive");
 
     private static final String message_as_json = new Gson().toJson(positiveMessages);
 
