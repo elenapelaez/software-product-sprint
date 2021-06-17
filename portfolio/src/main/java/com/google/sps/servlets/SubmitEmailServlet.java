@@ -5,6 +5,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.cloud.datastore.Datastore;
+import com.google.cloud.datastore.DatastoreOptions;
+import com.google.cloud.datastore.Entity;
+import com.google.cloud.datastore.FullEntity;
+import com.google.cloud.datastore.KeyFactory;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
 
 /**
  * Responds to a request consisting of a user's email
@@ -19,12 +26,26 @@ public class SubmitEmailServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
     // Get the value entered in the form.
-    String email = request.getParameter("email-address");
+    // String email = request.getParameter("email-address");
+
+    String email = Jsoup.clean(request.getParameter("email-address"), Whitelist.none());
+    long timestamp = System.currentTimeMillis();
+
+    Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
+    KeyFactory keyFactory = datastore.newKeyFactory().setKind("Email");
+    FullEntity taskEntity =
+        Entity.newBuilder(keyFactory.newKey())
+            .set("title", email)
+            .set("timestamp", timestamp)
+            .build();
+    datastore.put(taskEntity);
+
+    response.sendRedirect("/index.html");
 
     // Print the value so you can see it in the server logs.
     System.out.println("User's email: " + email);
 
     // Write the value to the response so the user can see it.
-    response.getWriter().println("Thank you for your response! I will be reaching out to you soon");
+    //response.getWriter().println("Thank you for your response! I will be reaching out to you soon");
   }
 }
