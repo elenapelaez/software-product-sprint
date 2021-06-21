@@ -33,5 +33,5 @@ function createEmailElement(email) {
 
   emailElement.appendChild(titleElement);
 
-  return taskElement;
+  return emailElement;
 }

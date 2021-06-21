@@ -37,7 +37,7 @@ public class SubmitEmailServlet extends HttpServlet {
     Datastore datastore = DatastoreOptions.getDefaultInstance().getService();
     KeyFactory keyFactory = datastore.newKeyFactory().setKind("Email");
     FullEntity taskEntity =
-        Entity.newBuilder(keyFactory.newKey(email))
+        Entity.newBuilder(keyFactory.newKey())
             .set("title", email)
             .set("timestamp", timestamp)
             .build();
@@ -67,6 +67,8 @@ public class SubmitEmailServlet extends HttpServlet {
 
       Email new_email = new Email(id, title, timestamp);
       emails.add(new_email);
+      System.out.println(id);
+      System.out.println(title);
     }
 
     Gson gson = new Gson();
