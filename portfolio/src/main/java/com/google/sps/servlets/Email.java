@@ -5,7 +5,6 @@ package main.java.com.google.sps.servlets;
  */
 
  public class Email{
-//       Email new_email = new Email(id, title, timestamp);
 
     public long id;
     public String title;
