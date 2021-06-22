@@ -1,13 +1,26 @@
-/*
- * Fetch a JSON array of messages from the server and randomly choose one to display
+
+/**
+ * Gets the JSON array of submitted emails from the server
  */
+function loadEmails() {
+  fetch('/submit-email').then(response => response.json()).then((emails) => {
+    const emailListElement = document.getElementById('email-responses');
+    emails.forEach((email) => {
+      emailListElement.appendChild(createEmailElement(email));
+    })
+  });
+}
 
-async function getMessage() {
-    const serverResponse = await fetch('/hello');
-    const messages = await serverResponse.json();
+/**
+ * Prints an email to the HTML page in a list
+ * @param email an element containing info about a user's email
+ */
+function createEmailElement(email) {
+  const emailElement = document.createElement('li');
+  const titleElement = document.createElement('span');
+  titleElement.innerText = email.title;
 
-    const container = document.getElementById('greeting-container');
-    const message = messages[Math.floor(Math.random() * messages.length)];
+  emailElement.appendChild(titleElement);
 
-    container.innerText = message;
+  return emailElement;
 }
