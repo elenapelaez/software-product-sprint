@@ -1,14 +1,3 @@
-/*
- * Fetch a JSON array of emails from the server
- */
-async function getMessage() {
-    const serverResponse = await fetch('/submit-email');
-    const messages = await serverResponse.json();
-
-    const container = document.getElementById('email-responses');
-
-    container.innerText = messages;
-}
 
 /**
  * gets the JSON array of submitted emails from the server
