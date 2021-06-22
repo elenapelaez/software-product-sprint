@@ -1,6 +1,6 @@
 
 /**
- * gets the JSON array of submitted emails from the server
+ * Gets the JSON array of submitted emails from the server
  */
 function loadEmails() {
   fetch('/submit-email').then(response => response.json()).then((emails) => {
@@ -12,7 +12,7 @@ function loadEmails() {
 }
 
 /**
- * prints an email to the HTML page in a list
+ * Prints an email to the HTML page in a list
  * @param email an element containing info about a user's email
  */
 function createEmailElement(email) {
